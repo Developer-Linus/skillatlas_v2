@@ -1,14 +1,14 @@
-import from "../components/Navbar" { Navbar }
-import from "../components/HeroSection" { HeroSection }
-import from "../components/StatsSection" { StatsSection }
-import from "../components/FeaturesSection" { FeaturesSection }
-import from "../components/HowItWorksSection" { HowItWorksSection }
-import from "../components/TestimonialsSection" { TestimonialsSection }
-import from "../components/PricingSection" { PricingSection }
-import from "../components/OurTeamSection" { OurTeamSection }
-import from "../components/CTASection" { CTASection }
-import from "../components/Footer" { Footer }
-import from "../components/SignUpModal" { SignUpModal }
+import from "..components/Navbar" { Navbar }
+import from "..components/HeroSection" { HeroSection }
+import from "..components/StatsSection" { StatsSection }
+import from "..components/FeaturesSection" { FeaturesSection }
+import from "..components/HowItWorksSection" { HowItWorksSection }
+import from "..components/TestimonialsSection" { TestimonialsSection }
+import from "..components/PricingSection" { PricingSection }
+import from "..components/OurTeamSection" { OurTeamSection }
+import from "..components/CTASection" { CTASection }
+import from "..components/Footer" { Footer }
+import from "..components/SignUpModal" { SignUpModal }
 
 def:pub IndexPage -> JsxElement {
     has modalOpen: bool = False;

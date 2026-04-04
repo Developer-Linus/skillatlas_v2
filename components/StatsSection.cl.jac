@@ -25,10 +25,10 @@ def:pub StatCard(icon: any, value: int, label: str) -> JsxElement {
             >
                 {icon}
             </div>
-            <p className="font-display text-4xl md:text-5xl font-bold text-white">
+            <p className="font-display text-4xl md:text-5xl font-bold text-[#0f2027]">
                 {count.toLocaleString()}+
             </p>
-            <p className="text-white/60 text-sm font-medium tracking-wide uppercase">
+            <p className="text-gray-500 text-sm font-medium tracking-wide uppercase">
                 {label}
             </p>
         </div>;
@@ -36,10 +36,10 @@ def:pub StatCard(icon: any, value: int, label: str) -> JsxElement {
 
 def:pub StatsSection -> JsxElement {
     return
-        <section className="relative z-10 bg-[#0f2027] border-y border-white/10">
+        <section className="relative z-10 bg-gray-50 border-y border-gray-200">
             <div className="container mx-auto px-6 py-6">
                 <div
-                    className="grid grid-cols-1 md:grid-cols-3 gap-2 md:divide-x md:divide-white/10"
+                    className="grid grid-cols-1 md:grid-cols-3 gap-2 md:divide-x md:divide-gray-200"
                 >
                     <StatCard
                         icon={<Users size={28}/>}

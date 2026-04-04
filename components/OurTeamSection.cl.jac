@@ -1,4 +1,4 @@
-import from "lucide-react" { Linkedin }
+import from "lucide-react" { ExternalLink }
 
 def:pub OurTeamSection -> JsxElement {
     return
@@ -56,7 +56,7 @@ def:pub OurTeamSection -> JsxElement {
                                 rel="noopener noreferrer"
                                 className="flex items-center justify-center gap-1 text-[11px] font-semibold text-white/80 hover:text-white transition-colors text-center whitespace-nowrap"
                             >
-                                <Linkedin
+                                <ExternalLink
                                     size={11}
                                     className="text-[#0A66C2] shrink-0"
                                 />
@@ -68,7 +68,7 @@ def:pub OurTeamSection -> JsxElement {
                                 rel="noopener noreferrer"
                                 className="flex items-center justify-center gap-1 text-[11px] font-semibold text-white/80 hover:text-white transition-colors text-center whitespace-nowrap"
                             >
-                                <Linkedin
+                                <ExternalLink
                                     size={11}
                                     className="text-[#0A66C2] shrink-0"
                                 />
@@ -80,7 +80,7 @@ def:pub OurTeamSection -> JsxElement {
                                 rel="noopener noreferrer"
                                 className="flex items-center justify-center gap-1 text-[11px] font-semibold text-white/80 hover:text-white transition-colors text-center whitespace-nowrap"
                             >
-                                <Linkedin
+                                <ExternalLink
                                     size={11}
                                     className="text-[#0A66C2] shrink-0"
                                 />

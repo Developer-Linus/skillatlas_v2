@@ -37,17 +37,17 @@ glob FEATURES: list = [
 def:pub FeatureCard(icon: any, title: str, desc: str) -> JsxElement {
     return
         <div
-            className="rounded-2xl border border-[#c8f5ed]/20 bg-white/5 p-8 hover:shadow-lg hover:bg-white/10 transition-all"
+            className="rounded-2xl border border-[#c8f5ed] bg-white p-8 hover:shadow-lg transition-all"
         >
             <div
                 className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-[#e1faf5] text-[#2dd4bf] mb-5"
             >
                 {icon}
             </div>
-            <h3 className="font-display text-lg font-semibold text-white mb-2">
+            <h3 className="font-display text-lg font-semibold text-[#0f2027] mb-2">
                 {title}
             </h3>
-            <p className="text-white/60 text-sm leading-relaxed">
+            <p className="text-gray-500 text-sm leading-relaxed">
                 {desc}
             </p>
         </div>;
@@ -55,20 +55,20 @@ def:pub FeatureCard(icon: any, title: str, desc: str) -> JsxElement {
 
 def:pub FeaturesSection -> JsxElement {
     return
-        <section id="features" className="bg-[#0a1628] py-20 pt-24 scroll-mt-20">
+        <section id="features" className="bg-[#f8fffe] py-20 pt-24 scroll-mt-20">
             <div className="container mx-auto px-6">
                 <div className="max-w-3xl mx-auto text-center mb-16">
                     <span
-                        className="inline-block text-sm font-semibold tracking-widest uppercase text-[#2dd4bf] mb-4"
+                        className="inline-block text-sm font-semibold tracking-widest uppercase text-[#0f6e56] mb-4"
                     >
                         Features
                     </span>
                     <h2
-                        className="font-display text-3xl md:text-5xl font-bold text-white mb-4"
+                        className="font-display text-3xl md:text-5xl font-bold text-[#0f2027] mb-4"
                     >
                         Everything You Need to Land the Job
                     </h2>
-                    <p className="text-lg text-white/60">
+                    <p className="text-lg text-gray-500">
                         Real insights from real job postings — not guesswork or generic advice.
                     </p>
                 </div>

@@ -2,7 +2,7 @@ import from "lucide-react" { UserPlus, FileUp, ScanSearch, Target, GraduationCap
 
 def:pub HowItWorksSection -> JsxElement {
     return
-        <section id="how-it-works" className="bg-[#0f1f2e] py-20 pt-24 scroll-mt-20">
+        <section id="how-it-works" className="bg-gray-50 py-20 pt-24 scroll-mt-20">
             <div className="container mx-auto px-6">
                 <div className="max-w-3xl mx-auto text-center mb-16">
                     <span
@@ -11,7 +11,7 @@ def:pub HowItWorksSection -> JsxElement {
                         How It Works
                     </span>
                     <h2
-                        className="font-display text-3xl md:text-5xl font-bold text-white"
+                        className="font-display text-3xl md:text-5xl font-bold text-[#0f2027]"
                     >
                         Get Started in 5 Simple Steps
                     </h2>
@@ -33,12 +33,12 @@ def:pub HowItWorksSection -> JsxElement {
                             <div className="flex items-center gap-2 mb-1">
                                 <UserPlus size={18} className="text-[#2dd4bf]"/>
                                 <h3
-                                    className="font-display text-lg font-semibold text-white"
+                                    className="font-display text-lg font-semibold text-[#0f2027]"
                                 >
                                     Sign Up
                                 </h3>
                             </div>
-                            <p className="text-white/60 text-sm leading-relaxed">
+                            <p className="text-gray-500 text-sm leading-relaxed">
                                 Create an account in seconds to get started.
                             </p>
                         </div>
@@ -59,12 +59,12 @@ def:pub HowItWorksSection -> JsxElement {
                             <div className="flex items-center gap-2 mb-1">
                                 <FileUp size={18} className="text-[#2dd4bf]"/>
                                 <h3
-                                    className="font-display text-lg font-semibold text-white"
+                                    className="font-display text-lg font-semibold text-[#0f2027]"
                                 >
                                     Upload CV & Select Role
                                 </h3>
                             </div>
-                            <p className="text-white/60 text-sm leading-relaxed">
+                            <p className="text-gray-500 text-sm leading-relaxed">
                                 Share your background and choose your target tech or data role.
                             </p>
                         </div>
@@ -85,12 +85,12 @@ def:pub HowItWorksSection -> JsxElement {
                             <div className="flex items-center gap-2 mb-1">
                                 <ScanSearch size={18} className="text-[#2dd4bf]"/>
                                 <h3
-                                    className="font-display text-lg font-semibold text-white"
+                                    className="font-display text-lg font-semibold text-[#0f2027]"
                                 >
                                     Skill Profile
                                 </h3>
                             </div>
-                            <p className="text-white/60 text-sm leading-relaxed">
+                            <p className="text-gray-500 text-sm leading-relaxed">
                                 SkillAtlas identifies your current skills and experience.
                             </p>
                         </div>
@@ -111,12 +111,12 @@ def:pub HowItWorksSection -> JsxElement {
                             <div className="flex items-center gap-2 mb-1">
                                 <Target size={18} className="text-[#2dd4bf]"/>
                                 <h3
-                                    className="font-display text-lg font-semibold text-white"
+                                    className="font-display text-lg font-semibold text-[#0f2027]"
                                 >
                                     Role Match Score
                                 </h3>
                             </div>
-                            <p className="text-white/60 text-sm leading-relaxed">
+                            <p className="text-gray-500 text-sm leading-relaxed">
                                 See how closely your skills align with your chosen role and where the gaps are.
                             </p>
                         </div>
@@ -133,12 +133,12 @@ def:pub HowItWorksSection -> JsxElement {
                             <div className="flex items-center gap-2 mb-1">
                                 <GraduationCap size={18} className="text-[#2dd4bf]"/>
                                 <h3
-                                    className="font-display text-lg font-semibold text-white"
+                                    className="font-display text-lg font-semibold text-[#0f2027]"
                                 >
                                     Personalised Learning Path
                                 </h3>
                             </div>
-                            <p className="text-white/60 text-sm leading-relaxed">
+                            <p className="text-gray-500 text-sm leading-relaxed">
                                 Receive clear, actionable steps to build job-ready skills.
                             </p>
                         </div>
