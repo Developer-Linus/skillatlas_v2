@@ -1,7 +1,7 @@
 import from "@jac/runtime" { useLocation }
 import from "../components/BrandLogo" { BrandLogo }
 
-def:pub page -> JsxElement {
+def:pub NotFoundPage -> JsxElement {
     location: any = useLocation();
 
     can with entry {

@@ -10,7 +10,7 @@ import from "../components/CTASection" { CTASection }
 import from "../components/Footer" { Footer }
 import from "../components/SignUpModal" { SignUpModal }
 
-def:pub page -> JsxElement {
+def:pub IndexPage -> JsxElement {
     has modalOpen: bool = False;
 
     def openModal -> None {

@@ -12,10 +12,7 @@ react-error-boundary = "^5.0.0"
 react-hook-form = "^7.71.0"
 zod = "^4.3.6"
 "@hookform/resolvers" = "^5.2.2"
-
-[plugins.client.vite]
-plugins = ["tailwindcss()"]
-lib_imports = ["import tailwindcss from '@tailwindcss/vite'"]
+lucide-react = "latest"
 
 [dependencies.npm.dev]
 vite = "^6.4.1"
@@ -26,10 +23,12 @@ typescript = "^5.3.3"
 tailwindcss = "latest"
 "@tailwindcss/vite" = "latest"
 
+[plugins.client.vite]
+plugins = ["tailwindcss()"]
+lib_imports = ["import tailwindcss from '@tailwindcss/vite'"]
+
 [dev-dependencies]
 watchdog = ">=3.0.0"
 
 [serve]
 base_route_app = "app"
-
-[plugins.client]
