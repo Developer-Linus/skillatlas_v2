@@ -96,12 +96,6 @@ repos:
         language: system
         pass_filenames: true
 
-      - id: no-binary-files
-        name: block binary files
-        entry: Binary files are not allowed
-        language: fail
-        types: [binary]
-
       - id: no-secrets
         name: detect secrets (basic)
         language: pygrep

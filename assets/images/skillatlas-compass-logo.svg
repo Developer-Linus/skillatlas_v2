@@ -1,0 +1,57 @@
+<svg width="400" height="400" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="400" fill="#0f2027"/>
+
+  <!-- Outer ring -->
+  <circle cx="200" cy="200" r="140" stroke="#2dd4bf" stroke-width="3" fill="none"/>
+
+  <!-- Middle ring -->
+  <circle cx="200" cy="200" r="90" stroke="#2dd4bf" stroke-width="1" stroke-opacity="0.3" fill="none"/>
+
+  <!-- Inner ring -->
+  <circle cx="200" cy="200" r="45" stroke="#2dd4bf" stroke-width="1" stroke-opacity="0.15" fill="none"/>
+
+  <!-- Tick marks around outer ring -->
+  <line x1="200" y1="60" x2="200" y2="74" stroke="#2dd4bf" stroke-width="2" stroke-opacity="0.5" stroke-linecap="round"/>
+  <line x1="340" y1="200" x2="326" y2="200" stroke="#2dd4bf" stroke-width="2" stroke-opacity="0.5" stroke-linecap="round"/>
+  <line x1="200" y1="340" x2="200" y2="326" stroke="#2dd4bf" stroke-width="2" stroke-opacity="0.5" stroke-linecap="round"/>
+  <line x1="60" y1="200" x2="74" y2="200" stroke="#2dd4bf" stroke-width="2" stroke-opacity="0.5" stroke-linecap="round"/>
+
+  <!-- Diagonal ticks -->
+  <line x1="299" y1="101" x2="289" y2="111" stroke="#2dd4bf" stroke-width="1.5" stroke-opacity="0.3" stroke-linecap="round"/>
+  <line x1="299" y1="299" x2="289" y2="289" stroke="#2dd4bf" stroke-width="1.5" stroke-opacity="0.3" stroke-linecap="round"/>
+  <line x1="101" y1="299" x2="111" y2="289" stroke="#2dd4bf" stroke-width="1.5" stroke-opacity="0.3" stroke-linecap="round"/>
+  <line x1="101" y1="101" x2="111" y2="111" stroke="#2dd4bf" stroke-width="1.5" stroke-opacity="0.3" stroke-linecap="round"/>
+
+  <!-- Cross hairs subtle -->
+  <line x1="200" y1="80" x2="200" y2="320" stroke="#2dd4bf" stroke-width="0.5" stroke-opacity="0.1"/>
+  <line x1="80" y1="200" x2="320" y2="200" stroke="#2dd4bf" stroke-width="0.5" stroke-opacity="0.1"/>
+
+  <!-- North arrow (yellow — ambition/goal) -->
+  <polygon points="200,78 214,200 200,186 186,200" fill="#fbbf24"/>
+
+  <!-- South arrow (teal faded) -->
+  <polygon points="200,322 186,200 200,214 214,200" fill="#2dd4bf" fill-opacity="0.4"/>
+
+  <!-- East arrow (teal faded) -->
+  <polygon points="322,200 200,186 214,200 200,214" fill="#2dd4bf" fill-opacity="0.25"/>
+
+  <!-- West arrow (teal faded) -->
+  <polygon points="78,200 200,214 186,200 200,186" fill="#2dd4bf" fill-opacity="0.25"/>
+
+  <!-- Center dot -->
+  <circle cx="200" cy="200" r="10" fill="#2dd4bf"/>
+  <circle cx="200" cy="200" r="5" fill="#0f2027"/>
+
+  <!-- N label -->
+  <text x="200" y="52" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#fbbf24">N</text>
+
+  <!-- S label -->
+  <text x="200" y="362" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="400" fill="#2dd4bf" fill-opacity="0.5">S</text>
+
+  <!-- E label -->
+  <text x="358" y="205" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="400" fill="#2dd4bf" fill-opacity="0.5">E</text>
+
+  <!-- W label -->
+  <text x="42" y="205" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="400" fill="#2dd4bf" fill-opacity="0.5">W</text>
+
+</svg>
