@@ -1,0 +1,115 @@
+ci:
+  autofix_commit_msg: "style: auto-fix lint issues"
+  autoupdate_schedule: weekly
+
+exclude: |
+  (?x)(
+      ^\.git/|
+      ^\.venv/|
+      ^venv/|
+      ^node_modules/|
+      ^dist/|
+      ^build/|
+      ^coverage/|
+      ^\.next/|
+      ^\.cache/|
+      ^__pycache__/|
+      ^tests/fixtures/|
+      ^data/|
+      ^generated/|
+      ^scripts/|
+      ^docs/build/|
+      ^.*\.min\.js$
+  )
+
+repos:
+  # ----------------------------
+  # 🔧 General Code Hygiene
+  # ----------------------------
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: check-yaml
+        args: [--allow-multiple-documents]
+      - id: check-json
+      - id: check-toml
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: mixed-line-ending
+        args: [--fix=lf]
+      - id: check-merge-conflict
+
+  # ----------------------------
+  # 📝 Markdown Linting
+  # ----------------------------
+  - repo: https://github.com/DavidAnson/markdownlint-cli2
+    rev: v0.20.0
+    hooks:
+      - id: markdownlint-cli2
+        args: [--fix]
+
+  # ----------------------------
+  # ⚡ Python Linting & Formatting
+  # ----------------------------
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.14.14
+    hooks:
+      - id: ruff
+        args: [--fix, --exit-non-zero-on-fix]
+      - id: ruff-format
+
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.19.1
+    hooks:
+      - id: mypy
+        args:
+          - --ignore-missing-imports
+          - --explicit-package-bases
+        additional_dependencies:
+          - types-requests
+          - types-PyYAML
+        exclude: (/tests/fixtures/|/generated/|/scripts/)
+
+  # ----------------------------
+  # 🧠 Jac Formatting & Linting
+  # ----------------------------
+  - repo: local
+    hooks:
+      - id: jac-format
+        name: jac-format (lint + fix)
+        description: Format and lint Jac files
+        entry: env PYTHONPATH=jac python3 -m jaclang format
+        language: python
+        files: \.jac$
+        args: [--lintfix]
+        require_serial: true
+        additional_dependencies:
+          - llvmlite>=0.43.0
+          - jaclang>=0.13.3
+
+      # ----------------------------
+      # 🚫 Repository Discipline Rules
+      # ----------------------------
+      - id: no-large-files
+        name: prevent large files (>1MB)
+        entry: bash -c 'test $(wc -c < "$1") -lt 1000000'
+        language: system
+        pass_filenames: true
+
+      - id: no-binary-files
+        name: block binary files
+        entry: Binary files are not allowed
+        language: fail
+        types: [binary]
+
+      - id: no-secrets
+        name: detect secrets (basic)
+        language: pygrep
+        entry: "(?i)(api_key|secret|token|password)\\s*=\\s*['\"].*['\"]"
+        files: \.(py|js|ts|env|yaml|json)$
+
+      - id: no-ai-coauthor
+        name: block AI co-author attribution
+        language: pygrep
+        entry: '(?i)co-authored-by:.*\b(claude|openai|copilot|gpt|gemini|ai|bot)\b'
+        stages: [commit-msg]

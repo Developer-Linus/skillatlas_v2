@@ -1,0 +1,13 @@
+[project]
+name = "skillatlas"
+version = "0.1.0"
+description = "AI-powered platform for analyzing CVs, evaluating role fit against market demand, and recommending skill development paths for tech careers."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "byllm>=0.6.3",
+    "jac-client>=0.3.11",
+    "jac-scale>=0.2.13",
+    "jaclang>=0.13.5",
+    "pre-commit>=4.5.1",
+]
