@@ -4,6 +4,7 @@ cl import from ".pages/index" { IndexPage }
 cl import from ".pages/not_found" { NotFoundPage }
 cl import from ".pages/dashboard" { DashboardPage }
 cl import from ".pages/login" { LoginPage }
+cl import from ".pages/signup" { SignupPage }
 
 cl {
     def:pub app -> JsxElement {
@@ -12,6 +13,7 @@ cl {
                 <Routes>
                     <Route path="/" element={<IndexPage/>}/>
                     <Route path="/login" element={<LoginPage/>}/>
+                    <Route path="/signup" element={<SignupPage/>}/>
                     <Route path="/dashboard" element={<DashboardPage/>}/>
                     <Route path="*" element={<NotFoundPage/>}/>
                 </Routes>

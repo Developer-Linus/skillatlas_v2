@@ -147,6 +147,15 @@ def:pub SignUpModal(open: bool = False, onOpenChange: any = None) -> JsxElement 
                         {"Creating account…" if loading else "Sign Up"}
                     </button>
                 </form>
+                <p className="text-center text-white/40 text-sm mt-6">
+                    Already have an account?
+                    <a
+                        href="/login"
+                        className="text-[#2dd4bf] hover:underline ml-1 font-medium"
+                    >
+                        Sign in
+                    </a>
+                </p>
             </div>
         </div>;
 }

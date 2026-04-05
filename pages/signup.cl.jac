@@ -1,23 +1,29 @@
-import from "@jac/runtime" { jacLogin, useNavigate }
+import from "@jac/runtime" { jacSignup, useNavigate }
 import from "..components/BrandLogo" { BrandLogo }
 
-def:pub LoginPage -> JsxElement {
-    has username: str = "",
+def:pub SignupPage -> JsxElement {
+    has name: str = "",
+        email: str = "",
         password: str = "",
+        confirmPassword: str = "",
         error: str = "",
         loading: bool = False;
 
     navigate: any = useNavigate();
 
-    async def handleLogin(e: any) -> None {
+    async def handleSignup(e: any) -> None {
         e.preventDefault();
+        if password != confirmPassword {
+            error = "Passwords do not match";
+            return;
+        }
         loading = True;
         error = "";
-        success: bool = await jacLogin(username, password);
-        if success {
+        result: dict = await jacSignup(email, password);
+        if result["success"] {
             navigate("/dashboard");
         } else {
-            error = "Invalid credentials. Please try again.";
+            error = result["error"] or "Signup failed";
             loading = False;
         }
     }
@@ -35,29 +41,45 @@ def:pub LoginPage -> JsxElement {
                 >
                     <div className="mb-7">
                         <h1 className="font-display text-2xl font-bold text-white">
-                            Welcome back
+                            Get Started for Free
                         </h1>
                         <p className="text-white/50 text-sm mt-1">
-                            Sign in to continue your learning journey.
+                            Create your account and start your learning journey.
                         </p>
                     </div>
                     <form
                         className="space-y-4"
-                        onSubmit={lambda e: any  -> None { handleLogin(e);}}
+                        onSubmit={lambda e: any  -> None { handleSignup(e);}}
                     >
                         <div className="space-y-1.5">
                             <label
                                 className="text-sm font-medium text-white/80"
-                                htmlFor="login-username"
+                                htmlFor="signup-name"
+                            >
+                                Full Name
+                            </label>
+                            <input
+                                id="signup-name"
+                                type="text"
+                                placeholder="Enter your name"
+                                value={name}
+                                onChange={lambda e: any  -> None { name = e.target.value;}}
+                                className="w-full px-4 py-2.5 rounded-lg bg-white/5 border border-white/10 text-white placeholder:text-white/30 focus:outline-none focus:border-[#2dd4bf] transition-colors text-sm"
+                            />
+                        </div>
+                        <div className="space-y-1.5">
+                            <label
+                                className="text-sm font-medium text-white/80"
+                                htmlFor="signup-email"
                             >
                                 Email
                             </label>
                             <input
-                                id="login-username"
+                                id="signup-email"
                                 type="email"
                                 placeholder="you@example.com"
-                                value={username}
-                                onChange={lambda e: any  -> None { username = e.target.value;}}
+                                value={email}
+                                onChange={lambda e: any  -> None { email = e.target.value;}}
                                 className="w-full px-4 py-2.5 rounded-lg bg-white/5 border border-white/10 text-white placeholder:text-white/30 focus:outline-none focus:border-[#2dd4bf] transition-colors text-sm"
                                 required={True}
                             />
@@ -65,16 +87,33 @@ def:pub LoginPage -> JsxElement {
                         <div className="space-y-1.5">
                             <label
                                 className="text-sm font-medium text-white/80"
-                                htmlFor="login-password"
+                                htmlFor="signup-password"
                             >
                                 Password
                             </label>
                             <input
-                                id="login-password"
+                                id="signup-password"
                                 type="password"
-                                placeholder="Enter your password"
+                                placeholder="Create a password"
                                 value={password}
                                 onChange={lambda e: any  -> None { password = e.target.value;}}
+                                className="w-full px-4 py-2.5 rounded-lg bg-white/5 border border-white/10 text-white placeholder:text-white/30 focus:outline-none focus:border-[#2dd4bf] transition-colors text-sm"
+                                required={True}
+                            />
+                        </div>
+                        <div className="space-y-1.5">
+                            <label
+                                className="text-sm font-medium text-white/80"
+                                htmlFor="signup-confirm-password"
+                            >
+                                Confirm Password
+                            </label>
+                            <input
+                                id="signup-confirm-password"
+                                type="password"
+                                placeholder="Repeat your password"
+                                value={confirmPassword}
+                                onChange={lambda e: any  -> None { confirmPassword = e.target.value;}}
                                 className="w-full px-4 py-2.5 rounded-lg bg-white/5 border border-white/10 text-white placeholder:text-white/30 focus:outline-none focus:border-[#2dd4bf] transition-colors text-sm"
                                 required={True}
                             />
@@ -90,16 +129,16 @@ def:pub LoginPage -> JsxElement {
                             disabled={loading}
                             className="w-full py-3 mt-2 rounded-lg bg-[#2dd4bf] text-[#0f2027] font-bold text-sm hover:bg-[#2dd4bf]/90 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
                         >
-                            {"Signing in…" if loading else "Sign In"}
+                            {"Creating account…" if loading else "Sign Up"}
                         </button>
                     </form>
                     <p className="text-center text-white/40 text-sm mt-6">
-                        Don't have an account?
+                        Already have an account?
                         <a
-                            href="/signup"
+                            href="/login"
                             className="text-[#2dd4bf] hover:underline ml-1 font-medium"
                         >
-                            Get started for free
+                            Sign in
                         </a>
                     </p>
                 </div>
