@@ -1,7 +1,8 @@
 import from "lucide-react" { Users, BookOpen, Briefcase }
 
 def:pub StatCard(icon: any, value: int, label: str) -> JsxElement {
-    has count: int = 0;
+    has count: int = 0,
+        intervalId: any = None;
 
     can with entry {
         step: int = value // 60;
