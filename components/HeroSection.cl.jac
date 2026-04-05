@@ -1,8 +1,14 @@
 import from "lucide-react" { ArrowRight }
+import from "@jac/runtime" { jacIsLoggedIn, useNavigate }
 
 def:pub HeroSection(onGetStarted: any = None) -> JsxElement {
+    isLoggedIn: bool = jacIsLoggedIn();
+    navigate: any = useNavigate();
+
     def handleGetStarted -> None {
-        if onGetStarted {
+        if isLoggedIn {
+            navigate("/dashboard");
+        } elif onGetStarted {
             onGetStarted();
         }
     }
@@ -62,7 +68,9 @@ def:pub HeroSection(onGetStarted: any = None) -> JsxElement {
                             className="flex items-center gap-2 text-lg px-8 py-4 bg-[#fbbf24] text-[#0f2027] hover:bg-[#fbbf24]/90 font-bold rounded-xl shadow-[0_4px_20px_rgba(251,191,36,0.4)] hover:shadow-[0_6px_28px_rgba(251,191,36,0.5)] transition-all"
                             onClick={lambda -> None { handleGetStarted();}}
                         >
-                            Get Started for Free
+                            {"Go to Dashboard"
+                                if isLoggedIn
+                                else "Get Started for Free"}
                             <ArrowRight size={20}/>
                         </button>
                     </div>

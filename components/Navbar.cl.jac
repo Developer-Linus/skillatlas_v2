@@ -1,5 +1,6 @@
 import from "./BrandLogo" { BrandLogo }
 import from "lucide-react" { Menu, X }
+import from "@jac/runtime" { jacIsLoggedIn, jacLogout, useNavigate }
 
 glob NAV_ITEMS: list = [
          {"label": "Features", "href": "#features"},
@@ -13,6 +14,9 @@ glob NAV_ITEMS: list = [
 def:pub Navbar(onGetStarted: any = None) -> JsxElement {
     has open: bool = False;
 
+    isLoggedIn: bool = jacIsLoggedIn();
+    navigate: any = useNavigate();
+
     def handleGetStarted -> None {
         if onGetStarted {
             onGetStarted();
@@ -24,6 +28,17 @@ def:pub Navbar(onGetStarted: any = None) -> JsxElement {
         if onGetStarted {
             onGetStarted();
         }
+    }
+
+    def handleLogout -> None {
+        jacLogout();
+        navigate("/");
+    }
+
+    def handleMobileLogout -> None {
+        open = False;
+        jacLogout();
+        navigate("/");
     }
 
     return
@@ -45,13 +60,39 @@ def:pub Navbar(onGetStarted: any = None) -> JsxElement {
                         >
                             {item["label"]}
                         </a> for item in NAV_ITEMS
-                    ]}
-                    <button
-                        className="bg-[#fbbf24] text-[#0f2027] hover:bg-[#fbbf24]/90 font-semibold text-sm px-4 py-2 rounded-md"
-                        onClick={lambda -> None { handleGetStarted();}}
-                    >
-                        Get Started
-                    </button>
+                    ]}{isLoggedIn
+                    and (
+                        <div className="flex items-center gap-3">
+                            <a
+                                href="/dashboard"
+                                className="text-[14px] font-bold text-white/65 hover:text-white transition-colors"
+                            >
+                                Dashboard
+                            </a>
+                            <button
+                                className="border border-white/20 text-white/65 hover:text-white hover:border-white/40 font-semibold text-sm px-4 py-2 rounded-md transition-colors"
+                                onClick={lambda -> None { handleLogout();}}
+                            >
+                                Logout
+                            </button>
+                        </div>
+                    )
+                    or (
+                        <div className="flex items-center gap-3">
+                            <a
+                                href="/login"
+                                className="text-[14px] font-bold text-white/65 hover:text-white transition-colors"
+                            >
+                                Login
+                            </a>
+                            <button
+                                className="bg-[#fbbf24] text-[#0f2027] hover:bg-[#fbbf24]/90 font-semibold text-sm px-4 py-2 rounded-md"
+                                onClick={lambda -> None { handleGetStarted();}}
+                            >
+                                Get Started
+                            </button>
+                        </div>
+                    )}
                 </div>
                 <button
                     className="md:hidden text-white"
@@ -73,13 +114,41 @@ def:pub Navbar(onGetStarted: any = None) -> JsxElement {
                     >
                         {item["label"]}
                     </a> for item in NAV_ITEMS
-                ]}
-                <button
-                    className="w-full bg-[#fbbf24] text-[#0f2027] hover:bg-[#fbbf24]/90 font-semibold text-sm px-4 py-2 rounded-md"
-                    onClick={lambda -> None { handleMobileGetStarted();}}
-                >
-                    Get Started
-                </button>
+                ]}{isLoggedIn
+                and (
+                    <>
+                        <a
+                            href="/dashboard"
+                            className="text-sm font-medium text-white/65 hover:text-white"
+                            onClick={lambda -> None { open = False;}}
+                        >
+                            Dashboard
+                        </a>
+                        <button
+                            className="w-full border border-white/20 text-white/65 hover:text-white hover:border-white/40 font-semibold text-sm px-4 py-2 rounded-md transition-colors"
+                            onClick={lambda -> None { handleMobileLogout();}}
+                        >
+                            Logout
+                        </button>
+                    </>
+                )
+                or (
+                    <>
+                        <a
+                            href="/login"
+                            className="text-sm font-medium text-white/65 hover:text-white"
+                            onClick={lambda -> None { open = False;}}
+                        >
+                            Login
+                        </a>
+                        <button
+                            className="w-full bg-[#fbbf24] text-[#0f2027] hover:bg-[#fbbf24]/90 font-semibold text-sm px-4 py-2 rounded-md"
+                            onClick={lambda -> None { handleMobileGetStarted();}}
+                        >
+                            Get Started
+                        </button>
+                    </>
+                )}
             </div>}
         </nav>;
 }
