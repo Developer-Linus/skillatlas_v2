@@ -49,7 +49,7 @@ def:pub OurTeamSection -> JsxElement {
                             alt="The SkillAtlas Founding Team"
                             className="w-full h-auto object-cover block"
                         />
-                        <div className="grid grid-cols-3 px-3 pb-6 mt-[-20px]">
+                        <div className="grid grid-cols-3 px-3 py-4">
                             <a
                                 href="https://linkedin.com/in/linuslangat"
                                 target="_blank"

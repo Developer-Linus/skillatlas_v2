@@ -1,8 +1,14 @@
 import from "lucide-react" { ArrowRight }
+import from "@jac/runtime" { jacIsLoggedIn, useNavigate }
 
 def:pub CTASection(onGetStarted: any = None) -> JsxElement {
+    isLoggedIn: bool = jacIsLoggedIn();
+    navigate: any = useNavigate();
+
     def handleGetStarted -> None {
-        if onGetStarted {
+        if isLoggedIn {
+            navigate("/dashboard");
+        } elif onGetStarted {
             onGetStarted();
         }
     }
@@ -29,7 +35,9 @@ def:pub CTASection(onGetStarted: any = None) -> JsxElement {
                             className="inline-flex items-center gap-2 text-lg px-10 py-4 bg-[#fbbf24] text-[#0f2027] hover:bg-[#fbbf24]/90 font-bold rounded-xl transition-colors"
                             onClick={lambda -> None { handleGetStarted();}}
                         >
-                            Get Started for Free
+                            {"Go to Dashboard"
+                                if isLoggedIn
+                                else "Get Started for Free"}
                             <ArrowRight size={20}/>
                         </button>
                     </div>

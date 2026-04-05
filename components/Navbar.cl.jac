@@ -81,7 +81,7 @@ def:pub Navbar(onGetStarted: any = None) -> JsxElement {
                         <div className="flex items-center gap-3">
                             <a
                                 href="/login"
-                                className="text-[14px] font-bold text-white/65 hover:text-white transition-colors"
+                                className="border border-white/30 text-white hover:border-white/60 font-semibold text-sm px-4 py-2 rounded-md transition-colors"
                             >
                                 Login
                             </a>
