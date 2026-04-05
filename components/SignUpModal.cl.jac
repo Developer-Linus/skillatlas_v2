@@ -5,6 +5,7 @@ def:pub SignUpModal(open: bool = False, onOpenChange: any = None) -> JsxElement 
     has name: str = "",
         email: str = "",
         password: str = "",
+        confirmPassword: str = "",
         error: str = "",
         loading: bool = False;
 
@@ -18,6 +19,10 @@ def:pub SignUpModal(open: bool = False, onOpenChange: any = None) -> JsxElement 
 
     async def handleSignup(e: any) -> None {
         e.preventDefault();
+        if password != confirmPassword {
+            error = "Passwords do not match";
+            return;
+        }
         loading = True;
         error = "";
         result: dict = await jacSignup(email, password);
@@ -112,6 +117,22 @@ def:pub SignUpModal(open: bool = False, onOpenChange: any = None) -> JsxElement 
                             className="w-full px-4 py-2.5 rounded-lg bg-white/5 border border-white/10 text-white placeholder:text-white/30 focus:outline-none focus:border-[#2dd4bf] transition-colors text-sm"
                         />
                     </div>
+                    <div className="space-y-1.5">
+                        <label
+                            className="text-sm font-medium text-white/80"
+                            htmlFor="signup-confirm-password"
+                        >
+                            Confirm Password
+                        </label>
+                        <input
+                            id="signup-confirm-password"
+                            type="password"
+                            placeholder="Repeat your password"
+                            value={confirmPassword}
+                            onChange={lambda e: any  -> None { confirmPassword = e.target.value;}}
+                            className="w-full px-4 py-2.5 rounded-lg bg-white/5 border border-white/10 text-white placeholder:text-white/30 focus:outline-none focus:border-[#2dd4bf] transition-colors text-sm"
+                        />
+                    </div>
                     {error
                     and <p
                         className="text-sm text-red-400 bg-red-400/10 border border-red-400/20 rounded-lg px-4 py-2.5"
@@ -123,7 +144,7 @@ def:pub SignUpModal(open: bool = False, onOpenChange: any = None) -> JsxElement 
                         disabled={loading}
                         className="w-full py-3 mt-2 rounded-lg bg-[#2dd4bf] text-[#0f2027] font-bold text-sm hover:bg-[#2dd4bf]/90 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
                     >
-                        {loading if "Creating account…" else "Sign Up"}
+                        {"Creating account…" if loading else "Sign Up"}
                     </button>
                 </form>
             </div>
