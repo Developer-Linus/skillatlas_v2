@@ -1,9 +1,14 @@
+import from "@jac/runtime" { jacSignup, useNavigate }
 import from "lucide-react" { X }
 
 def:pub SignUpModal(open: bool = False, onOpenChange: any = None) -> JsxElement {
     has name: str = "",
         email: str = "",
-        password: str = "";
+        password: str = "",
+        error: str = "",
+        loading: bool = False;
+
+    navigate: any = useNavigate();
 
     def close -> None {
         if onOpenChange {
@@ -11,9 +16,17 @@ def:pub SignUpModal(open: bool = False, onOpenChange: any = None) -> JsxElement 
         }
     }
 
-    def handleSubmit(e: any) -> None {
+    async def handleSignup(e: any) -> None {
         e.preventDefault();
-        close();
+        loading = True;
+        error = "";
+        result: dict = await jacSignup(email, password);
+        if result["success"] {
+            navigate("/dashboard");
+        } else {
+            error = result["error"] or "Signup failed";
+            loading = False;
+        }
     }
 
     if not open {
@@ -49,7 +62,7 @@ def:pub SignUpModal(open: bool = False, onOpenChange: any = None) -> JsxElement 
                 </div>
                 <form
                     className="space-y-4"
-                    onSubmit={lambda e: any  -> None { handleSubmit(e);}}
+                    onSubmit={lambda e: any  -> None { handleSignup(e);}}
                 >
                     <div className="space-y-1.5">
                         <label
@@ -99,11 +112,18 @@ def:pub SignUpModal(open: bool = False, onOpenChange: any = None) -> JsxElement 
                             className="w-full px-4 py-2.5 rounded-lg bg-white/5 border border-white/10 text-white placeholder:text-white/30 focus:outline-none focus:border-[#2dd4bf] transition-colors text-sm"
                         />
                     </div>
+                    {error
+                    and <p
+                        className="text-sm text-red-400 bg-red-400/10 border border-red-400/20 rounded-lg px-4 py-2.5"
+                    >
+                        {error}
+                    </p>}
                     <button
                         type="submit"
-                        className="w-full py-3 mt-2 rounded-lg bg-[#2dd4bf] text-[#0f2027] font-bold text-sm hover:bg-[#2dd4bf]/90 transition-colors"
+                        disabled={loading}
+                        className="w-full py-3 mt-2 rounded-lg bg-[#2dd4bf] text-[#0f2027] font-bold text-sm hover:bg-[#2dd4bf]/90 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
                     >
-                        Sign Up
+                        {loading if "Creating account…" else "Sign Up"}
                     </button>
                 </form>
             </div>
