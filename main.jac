@@ -6,6 +6,8 @@ cl import from ".pages/dashboard" { DashboardPage }
 cl import from ".pages/login" { LoginPage }
 cl import from ".pages/signup" { SignupPage }
 
+cl import from ".utils/gsap" { gsap, ScrollTrigger }
+
 cl {
     def:pub app -> JsxElement {
         return

@@ -1,5 +1,6 @@
 import from "lucide-react" { ArrowRight }
 import from "@jac/runtime" { jacIsLoggedIn, useNavigate }
+import from "..utils/gsap" { gsap, SplitText, useGSAP }
 
 def:pub HeroSection(onGetStarted: any = None) -> JsxElement {
     isLoggedIn: bool = jacIsLoggedIn();
@@ -12,6 +13,28 @@ def:pub HeroSection(onGetStarted: any = None) -> JsxElement {
             onGetStarted();
         }
     }
+
+    useGSAP(
+        lambda { charStagger = 0.03;split = SplitText.create(
+            "#hero-heading", {"type": "words, chars"}
+        );tl = gsap.timeline({"defaults": {"ease": "power3.out"}});tl.from(
+            "#hero-badge", {"y": -20, "opacity": 0, "duration": 0.5}
+        ).from(
+            split.chars,
+            {
+                "y": 80,
+                "opacity": 0,
+                "duration": 0.6,
+                "stagger": charStagger,
+                "ease": "back.out(1.4)"
+            },
+            "-=0.2"
+        ).from(
+            "#hero-para", {"y": 32, "opacity": 0, "duration": 0.6}, "-=0.3"
+        ).from(
+            "#hero-cta", {"scale": 0.92, "opacity": 0, "duration": 0.45}, "-=0.2"
+        );}
+    );
 
     return
         <section
@@ -36,11 +59,13 @@ def:pub HeroSection(onGetStarted: any = None) -> JsxElement {
             <div className="relative z-10 container mx-auto px-6 pt-28 pb-20">
                 <div className="max-w-3xl mx-auto flex flex-col items-center">
                     <span
+                        id="hero-badge"
                         className="self-start rounded-full px-5 py-2 text-sm font-bold text-[#2dd4bf] border border-[#2dd4bf]/40 bg-white/5 backdrop-blur-sm mb-4"
                     >
                         Join 10,000+ learners transforming their careers
                     </span>
                     <h1
+                        id="hero-heading"
                         className="font-display md:text-[72px] text-5xl sm:text-6xl font-bold text-white leading-tight mb-6 drop-shadow-[0_3px_12px_rgba(0,0,0,0.5)]"
                         style={{"letterSpacing": "-0.02em"}}
                     >
@@ -57,11 +82,13 @@ def:pub HeroSection(onGetStarted: any = None) -> JsxElement {
                         .
                     </h1>
                     <p
+                        id="hero-para"
                         className="text-[22px] font-normal text-[#D1D5DB] max-w-2xl mx-auto mb-10 font-body leading-relaxed drop-shadow-[0_1px_6px_rgba(0,0,0,0.5)]"
                     >
                         SkillAtlas connects you to world-class programs, curated courses, and real job opportunities—all in one platform designed for your growth.
                     </p>
                     <div
+                        id="hero-cta"
                         className="flex flex-col sm:flex-row items-center justify-center gap-4"
                     >
                         <button

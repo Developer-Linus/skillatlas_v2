@@ -13,6 +13,8 @@ react-hook-form = "^7.71.0"
 zod = "^4.3.6"
 "@hookform/resolvers" = "^5.2.2"
 lucide-react = "latest"
+gsap = "latest"
+"@gsap/react" = "latest"
 
 [dependencies.npm.dev]
 vite = "^6.4.1"
