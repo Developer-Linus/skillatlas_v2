@@ -1,5 +1,4 @@
 import from "@jac/runtime" { jacLogin, useNavigate }
-import from "..components/BrandLogo" { BrandLogo }
 
 def:pub LoginPage -> JsxElement {
     has username: str = "",
@@ -27,9 +26,6 @@ def:pub LoginPage -> JsxElement {
             className="min-h-screen bg-[#0f2027] flex flex-col items-center justify-center px-4"
         >
             <div className="w-full max-w-md">
-                <div className="flex justify-center mb-10">
-                    <BrandLogo/>
-                </div>
                 <div
                     className="bg-white/5 border border-white/10 rounded-2xl p-8 shadow-2xl"
                 >
