@@ -7,6 +7,7 @@ requires-python = ">=3.12"
 dependencies = [
     "byllm>=0.6.3",
     "jac-client>=0.3.11",
+    "jac-mcp>=0.1.10",
     "jac-scale>=0.2.13",
     "jaclang>=0.13.5",
     "pre-commit>=4.5.1",

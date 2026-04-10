@@ -1,6 +1,7 @@
+import from "..utils/gsap_utils" { gsap, SplitText, useGSAP }
 import from "lucide-react" { ArrowRight }
 import from "@jac/runtime" { jacIsLoggedIn, useNavigate }
-import from "..utils/gsap" { gsap, SplitText, useGSAP }
+
 
 def:pub HeroSection(onGetStarted: any = None) -> JsxElement {
     isLoggedIn: bool = jacIsLoggedIn();
